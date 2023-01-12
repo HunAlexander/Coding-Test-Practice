@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="과일_장수.cpp">
+      <Filter>Programmers\Level_1\Solved</Filter>
+    </ClCompile>
+    <ClCompile Include="기사단원의_무기.cpp">
+      <Filter>Programmers\Level_1\Solved</Filter>
+    </ClCompile>
+    <ClCompile Include="푸드_파이트_대회.cpp">
+      <Filter>Programmers\Level_1\Solved</Filter>
+    </ClCompile>
+    <ClCompile Include="숫자_카드_나누기.cpp">
+      <Filter>Programmers\Level_2\Solved</Filter>
+    </ClCompile>
+    <ClCompile Include="롤케이크_자르기.cpp">
+      <Filter>Programmers\Level_2</Filter>
+    </ClCompile>
+    <ClCompile Include="택배_상자.cpp">
+      <Filter>Programmers\Level_2\Solved</Filter>
+    </ClCompile>
+    <ClCompile Include="연속_부분_수열_합의_개수.cpp">
+      <Filter>Programmers\Level_2\Solved</Filter>
+    </ClCompile>
+    <ClCompile Include="혼자_놀기의_달인.cpp">
+      <Filter>Programmers\Level_2\Solved</Filter>
+    </ClCompile>
+    <ClCompile Include="두_큐의_합_같게_만들기.cpp">
+      <Filter>Programmers\Level_2</Filter>
+    </ClCompile>
+    <ClCompile Include="최대_공약수.cpp">
+      <Filter>Etc</Filter>
+    </ClCompile>
+    <ClCompile Include="J_Test_01_0.cpp">
+      <Filter># J Test\01</Filter>
+    </ClCompile>
+    <ClCompile Include="J_Test_01_1.cpp">
+      <Filter># J Test\01</Filter>
+    </ClCompile>
+    <ClCompile Include="J_Test_02_1.cpp">
+      <Filter># J Test\02</Filter>
+    </ClCompile>
+    <ClCompile Include="J_Test_02_0.cpp">
+      <Filter># J Test\02</Filter>
+    </ClCompile>
+    <ClCompile Include="J_Test_03_0.cpp">
+      <Filter># J Test\03</Filter>
+    </ClCompile>
+    <ClCompile Include="J_Test_03_1.cpp">
+      <Filter># J Test\03</Filter>
+    </ClCompile>
+    <ClCompile Include="J_Test_01_2.cpp">
+      <Filter># J Test\01</Filter>
+    </ClCompile>
+    <ClCompile Include="알고리즘_재귀_반복.cpp">
+      <Filter>Algorithm+</Filter>
+    </ClCompile>
+    <ClCompile Include="BJ_1단계_입출력과_사칙연산.cpp">
+      <Filter>BeckJoon</Filter>
+    </ClCompile>
+    <ClCompile Include="BJ_4단계_1차원_배열.cpp">
+      <Filter>BeckJoon</Filter>
+    </ClCompile>
+    <ClCompile Include="BJ_3단계_반복문.cpp">
+      <Filter>BeckJoon</Filter>
+    </ClCompile>
+    <ClCompile Include="BJ_5단계_함수.cpp">
+      <Filter>BeckJoon</Filter>
+    </ClCompile>
+    <ClCompile Include="BJ_6단계_문자열.cpp">
+      <Filter>BeckJoon</Filter>
+    </ClCompile>
+    <ClCompile Include="BJ_7단계_기본_수학_1.cpp">
+      <Filter>BeckJoon</Filter>
+    </ClCompile>
+    <ClCompile Include="BJ_Class_1.cpp">
+      <Filter>BeckJoon</Filter>
+    </ClCompile>
+    <ClCompile Include="BJ_Class_2.cpp">
+      <Filter>BeckJoon</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Etc">
+      <UniqueIdentifier>{fde2ffff-ef12-47cf-9bc0-ebb3e8b54be0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="# J Test">
+      <UniqueIdentifier>{2fb855e6-4d03-48d8-9113-3ec1918448e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Programmers">
+      <UniqueIdentifier>{d7712aca-1d76-4c95-9e89-31a32c795c1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Programmers\Level_1">
+      <UniqueIdentifier>{2f3a4413-fe6a-4b32-a818-58d8df857a79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Programmers\Level_1\Solved">
+      <UniqueIdentifier>{123d3113-bc94-480b-9e9b-e9fb2e90abcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Programmers\Level_2">
+      <UniqueIdentifier>{bdc0d76f-de92-4f32-8927-c32c1e84d184}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Programmers\Level_2\Solved">
+      <UniqueIdentifier>{83331042-518e-4e25-8e26-4fb9fa6b3927}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BeckJoon">
+      <UniqueIdentifier>{72cc085b-3242-4909-9af3-515aca392600}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="# J Test\01">
+      <UniqueIdentifier>{582b0359-3cbd-4805-9b48-f0861ff65e4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="# J Test\02">
+      <UniqueIdentifier>{d7abf659-b75e-4354-a3b9-30f8c26b7840}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="# J Test\03">
+      <UniqueIdentifier>{653954e4-b5d2-4761-ae84-7fb161934eb9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithm+">
+      <UniqueIdentifier>{017c7d9e-4bbe-461b-9ce0-211f4d533218}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Default.h">
+      <Filter>Etc</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
