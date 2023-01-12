@@ -1,6 +1,6 @@
 #include "Default.h"
 
-#define _PROBLEM_NUMBER 1181
+#define _PROBLEM_NUMBER 1654
 
 /* == template ==
 
@@ -8,6 +8,8 @@
 using namespace std;
 
 #include <cmath>
+#include <climits>
+#include <list>
 
 int Solution_0000()
 {
@@ -388,7 +390,175 @@ int Solution_1181_00()
 
 #pragma endregion
 
+#pragma region 1259 : 팰린드롬수
 
+int Solution_1259()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+
+	int iInput = 0;
+
+	while (true)
+	{
+		cin >> iInput;
+		if (0 == iInput)
+			break;
+
+		int iCount = 0;
+		int	arrNumber[5] = { 0 };
+
+		for (int& iNumber : arrNumber)
+		{
+			iNumber = iInput % 10;
+			if (!(iInput /=10))
+				break;
+			++iCount;
+		}
+
+		int iLength = (iCount >> 1) + 1;
+		bool bPalindrome = true;
+
+		if(0 < iCount)
+		{
+			for (int i = 0; i < iLength; i++)
+			{
+				if (arrNumber[i] != arrNumber[iCount - i])
+				{
+					bPalindrome = false;
+					break;
+				}
+			}
+		}
+
+		bPalindrome ? cout << "yes" << ENDL : cout << "no" << ENDL;
+	}
+
+	return 0;
+}
+
+#pragma endregion
+
+#pragma region 1436 : 영화감독 숌
+
+int Solution_1436()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+
+	int N = 0;
+	cin >> N;
+
+	int iCurrent = 666;
+	int iCount = 0;
+
+
+	while (true)
+	{
+		int iTemp = iCurrent;
+		while (iTemp != 0)
+		{
+			if (666 == (iTemp % 1000))
+			{
+				++iCount;
+				break;
+			}
+			iTemp /= 10;
+		}
+
+		if (N == iCount)
+			break;
+
+		++iCurrent;
+	}
+
+	cout << iCurrent << ENDL;
+
+	return 0;
+}
+
+#pragma endregion
+
+#pragma region 1654 : 랜선 자르기
+
+int Solution_1654()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	typedef unsigned long long _ullong;
+
+	_ullong K, N;
+	list<_ullong> LanList;
+	_ullong left = 0, right = 0, mid;
+	cin >> K >> N;
+
+	for (_ullong i = 0; i < K; i++)
+	{
+		_ullong Arg = 0;
+		cin >> Arg;
+		LanList.push_back(Arg);
+		right = max(Arg, right);
+	}
+
+	while (left <= right)
+	{
+		mid = (left + right) >> 1;
+
+		_ullong Count = 0;
+		for (const _ullong& Line : LanList)
+		{
+			Count += Line / mid;
+		}
+
+		if (Count < N)
+		{
+			right = mid - 1;
+		}
+		else
+		{
+			left = mid + 1;
+		}
+	}
+
+	cout << right << ENDL;
+
+	return 0;
+}
+
+int Solution_1654_00()
+{
+	typedef unsigned long long _ullong;
+
+	int K, N;
+	list<_ullong> LanList;
+	_ullong Length = 0;
+	cin >> K >> N;
+	for (_ullong i = 0; i < K; i++)
+	{
+		_ullong Arg = 0;
+		cin >> Arg;
+		LanList.push_back(Arg);
+		Length = max(Arg, Length);
+
+	}
+
+	while (true)
+	{
+		_ullong Count = 0;
+		for (const _ullong& Line : LanList)
+		{
+			Count += Line / Length;
+		}
+
+		if (Count >= N)
+			break;
+
+		--Length;
+	}
+
+	cout << Length << ENDL;
+
+	return 0;
+}
+
+#pragma endregion
 
 int main()
 {
