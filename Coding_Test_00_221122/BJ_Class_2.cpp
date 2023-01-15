@@ -1,6 +1,6 @@
 #include "Default.h"
 
-#define _PROBLEM_NUMBER 1181
+#define _PROBLEM_NUMBER 2231
 
 /* == template ==
 
@@ -388,6 +388,38 @@ int Solution_1181_00()
 
 #pragma endregion
 
+#pragma region 2231 : ºÐÇØÇÕ
+
+int Solution_2231()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+
+	int N = 0;
+	cin >> N;
+
+	for (int i = 1; i <= N; i++)
+	{
+		int M = i;
+		int iTemp = i;
+		while (0 < M)
+		{
+			iTemp += M % 10;
+			M /= 10;
+		}
+
+		if (iTemp == N)
+		{
+			cout << i << ENDL;
+			return 0;
+		}
+	}
+
+	cout << 0 << ENDL;
+
+	return 0;
+}
+
+#pragma endregion
 
 
 int main()
