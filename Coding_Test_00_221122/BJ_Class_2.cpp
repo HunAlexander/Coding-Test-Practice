@@ -1,7 +1,6 @@
 #include "Default.h"
 
-#define _PROBLEM_NUMBER 1874
-
+#define _PROBLEM_NUMBER 1920
 /* == template ==
 
 #include <iostream>
@@ -10,6 +9,8 @@ using namespace std;
 #include <cmath>
 #include <climits>
 #include <list>
+#include <vector>
+#include <algorithm>
 
 int Solution_0000()
 {
@@ -647,6 +648,57 @@ int Solution_1874()
 }
 
 #pragma endregion
+
+#pragma region 1920 : ¼ö Ã£±â
+
+int Solution_1920()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	int N, M;
+	cin >> N;
+	vector<int> A;
+	A.reserve(N);
+	for (int i = 0; i < N; i++)
+	{
+		int A_element = 0;
+		cin >> A_element;
+		A.push_back(A_element);
+	}
+	sort(A.begin(), A.end());
+	cin >> M;
+	for (int i = 0; i < M; i++)
+	{
+		int X = 0;
+		int left = 0, right = static_cast<int>(A.size()) - 1;
+		int mid = 0;
+		bool bExist = false;
+		cin >> X;
+		while (left <= right)
+		{
+			mid = (left + right) >> 1;
+			if (X == A[mid])
+			{
+				bExist = true;
+				break;
+			}
+			if (X < A[mid])
+			{
+				right = mid - 1;
+			}
+			if (X > A[mid])
+			{
+				left = mid + 1;
+			}
+		}
+
+		bExist ? cout << 1 << ENDL : cout << 0 << ENDL;
+	}
+
+	return 0;
+}
+
+#pragma endregion
+
 
 int main()
 {
