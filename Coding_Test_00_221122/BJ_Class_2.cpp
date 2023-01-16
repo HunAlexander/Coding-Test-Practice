@@ -1,6 +1,6 @@
 #include "Default.h"
 
-#define _PROBLEM_NUMBER 2231
+#define _PROBLEM_NUMBER 1874
 
 /* == template ==
 
@@ -451,7 +451,7 @@ int Solution_1259()
 		int iLength = (iCount >> 1) + 1;
 		bool bPalindrome = true;
 
-		if(0 < iCount)
+		if (0 < iCount)
 		{
 			for (int i = 0; i < iLength; i++)
 			{
@@ -593,9 +593,65 @@ int Solution_1654_00()
 
 #pragma endregion
 
+#pragma region 1874 : 스택 수열
+
+int Solution_1874()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+
+	int n = 0;
+	cin >> n;
+	list<int> sequenceList;
+	list<int> intList;
+	list<int> stackList;
+	list<char> operatorList;
+
+	for (int i = 1; i <= n; i++)
+	{
+		int iData = 0;
+		cin >> iData;
+		sequenceList.push_back(iData);
+		intList.push_back(i);
+	}
+
+	while (true)
+	{
+		if (!stackList.empty() && sequenceList.front() == stackList.back())
+		{
+			sequenceList.pop_front();
+			stackList.pop_back();
+			operatorList.push_back('-');
+
+			if (sequenceList.empty())
+				break;
+		}
+		else if (intList.empty())
+		{
+			cout << "NO" << ENDL;
+			return 0;
+		}
+		else
+		{
+			stackList.push_back(intList.front());
+			intList.pop_front();
+			operatorList.push_back('+');
+		}
+	}
+
+	for (const char& chOperator : operatorList)
+	{
+		cout << chOperator << ENDL;
+	}
+
+	return 0;
+}
+
+#pragma endregion
+
 int main()
 {
 	_APPEND_FUNC(Solution_, _PROBLEM_NUMBER);
 	system("pause");
+
 	return 0;
 }
