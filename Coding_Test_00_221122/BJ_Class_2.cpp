@@ -699,7 +699,6 @@ int Solution_1920()
 
 #pragma endregion
 
-
 int main()
 {
 	_APPEND_FUNC(Solution_, _PROBLEM_NUMBER);
