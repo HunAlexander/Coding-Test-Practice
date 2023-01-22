@@ -1,6 +1,6 @@
 #include "Default.h"
+#define _PROBLEM_NUMBER 1966
 
-#define _PROBLEM_NUMBER 1920
 /* == template ==
 
 #include <iostream>
@@ -698,6 +698,121 @@ int Solution_1920()
 }
 
 #pragma endregion
+
+#pragma region 1929 : 소수 구하기
+/*
+에라토스테네스의 체 : 소수를 구하는 알고리즘
+https://ko.wikipedia.org/wiki/%EC%97%90%EB%9D%BC%ED%86%A0%EC%8A%A4%ED%85%8C%EB%84%A4%EC%8A%A4%EC%9D%98_%EC%B2%B4
+*/
+
+int Solution_1929()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+
+	int M, N;
+	cin >> M >> N;
+
+	bool* pPrimeNumbers = new bool[N + 1];
+	for (int i = 2; i <= N; i++)
+	{
+		pPrimeNumbers[i] = true;
+	}
+
+	for (int i = 2; i * i <= N; i++)
+	{
+		if (pPrimeNumbers[i])
+		{
+			for (int j = i * i; j <= N; j+=i)
+			{
+				pPrimeNumbers[j] = false;
+			}
+		}
+	}
+
+	for (int i = M; i <= N; i++)
+	{
+		if (pPrimeNumbers[i])
+			cout << i << ENDL;
+	}
+
+	delete[] pPrimeNumbers;
+
+	return 0;
+}
+
+#pragma endregion
+
+#pragma region 1966 : 프린터 큐
+/*
+나중에 queue도 한 번 활용해볼까?
+*/
+int Solution_1966()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+
+	int T; // 테스트 케이스 횟수
+	int N; // 문서의 개수
+	int M; // (몇 번째로 인쇄되었는지 궁금한 문서) 현재 큐에서의 위치 
+
+	typedef struct tagNode {
+		int iValue = 0;
+		bool bCheck = false;
+	} TNode;
+
+	cin >> T;
+	for (int i = 0; i < T; i++)
+	{
+		cin >> N >> M;
+		TNode* pDoc = new TNode[N];
+		for (int i = 0; i < N; i++)
+		{
+			cin >> pDoc[i].iValue;
+
+			if (i == M)
+				pDoc[i].bCheck = true;
+		}
+
+		int iCmpIndex = 0;
+		while (true)
+		{
+			bool bPop = true;
+			for (int i = iCmpIndex + 1; i < N; i++)
+			{
+				// 첫 번째 문서보다 중요도가 큰 문서가 있으면 재정렬
+				if (pDoc[iCmpIndex].iValue < pDoc[i].iValue)
+				{
+					bPop = false;
+					TNode tFirstDoc = pDoc[iCmpIndex];
+					for (int j = iCmpIndex; j < N - 1; j++)
+					{
+						pDoc[j] = pDoc[j + 1];
+					}
+					pDoc[N - 1] = tFirstDoc;
+					break;
+				}
+			}
+
+			if (true == bPop)
+			{
+				if (true == pDoc[iCmpIndex].bCheck)
+				{
+					cout << iCmpIndex + 1 << ENDL;
+					break;
+				}
+				else
+				{
+					++iCmpIndex;
+				}
+			}
+		}
+		delete[] pDoc;
+	}
+
+	return 0;
+}
+
+#pragma endregion
+
 
 int main()
 {
