@@ -1,5 +1,5 @@
 #include "Default.h"
-#define _PROBLEM_NUMBER 1966
+#define _PROBLEM_NUMBER 1978
 
 /* == template ==
 
@@ -807,6 +807,46 @@ int Solution_1966()
 		}
 		delete[] pDoc;
 	}
+
+	return 0;
+}
+
+#pragma endregion
+
+#pragma region 1978 : 소수 찾기
+
+int Solution_1978()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+
+	int N; // 검사 받을 자연수 개수
+	bool bNotPrimeNumber[1001] = { 0 };
+	int iPrimeNumberCount = 0;
+
+	// 소수인지 판별할 값을 구함
+	bNotPrimeNumber[0] = true;
+	bNotPrimeNumber[1] = true;
+	for (int i = 2; i * i <= 1000; i++)
+	{
+		if (false == bNotPrimeNumber[i])
+		{
+			for (int j = i * i; j <= 1000; j+=i)
+			{
+				bNotPrimeNumber[j] = true;
+			}
+		}
+	}
+
+	cin >> N;
+	while (N--)
+	{
+		int iIndex = 0;
+		cin >> iIndex;
+		if (false == bNotPrimeNumber[iIndex])
+			++iPrimeNumberCount;
+	}
+
+	cout << iPrimeNumberCount << ENDL;
 
 	return 0;
 }
