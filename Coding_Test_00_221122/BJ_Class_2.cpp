@@ -1,5 +1,5 @@
 #include "Default.h"
-#define _PROBLEM_NUMBER 1978
+#define _PROBLEM_NUMBER 2108
 
 /* == template ==
 
@@ -853,6 +853,55 @@ int Solution_1978()
 
 #pragma endregion
 
+#pragma region 2108 : ≈Î∞Ë«–
+
+int Solution_2108()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+
+	int N = 0;
+	int iAvg = 0;
+	int iMin = INT_MAX, iMax = INT_MIN;
+	int iCount = 0;
+	int arrCounts[8001] = { 0 };
+	list<int> ModeList;
+	vector<int> NumberVector;
+
+	cin >> N;
+	NumberVector.reserve(N);
+
+	for (int i = 0; i < N; i++)
+	{
+		int iInput = 0;
+		cin >> iInput;
+		iAvg += iInput;
+		iMin = min(iMin, iInput);
+		iMax = max(iMax, iInput);
+		iCount = max(iCount, ++arrCounts[4000 + iInput]);
+		NumberVector.push_back(iInput);
+	}
+
+	for (int i = 0; i < 8001; i++)
+	{
+		if (iCount == arrCounts[i])
+		{
+			ModeList.push_back(i - 4000);
+		}
+	}
+
+	ModeList.sort();
+	sort(NumberVector.begin(), NumberVector.end());
+	iAvg = round((double)iAvg / N);
+
+	cout << iAvg << ENDL;
+	cout << NumberVector[N >> 1] << ENDL;
+	(1 < ModeList.size()) ? cout << *(++ModeList.begin()) << ENDL : cout << ModeList.front() << ENDL;
+	cout << iMax - iMin << ENDL;
+
+	return 0;
+}
+
+#pragma endregion
 
 int main()
 {
