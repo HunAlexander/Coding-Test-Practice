@@ -1,5 +1,5 @@
 #include "Default.h"
-#define _PROBLEM_NUMBER 2108
+#define _PROBLEM_NUMBER 2164
 
 /* == template ==
 
@@ -10,6 +10,7 @@ using namespace std;
 #include <climits>
 #include <list>
 #include <vector>
+#include <queue>
 #include <algorithm>
 
 int Solution_0000()
@@ -891,7 +892,7 @@ int Solution_2108()
 
 	ModeList.sort();
 	sort(NumberVector.begin(), NumberVector.end());
-	iAvg = round((double)iAvg / N);
+	iAvg = static_cast<int>(round((double)iAvg / N));
 
 	cout << iAvg << ENDL;
 	cout << NumberVector[N >> 1] << ENDL;
@@ -903,8 +904,41 @@ int Solution_2108()
 
 #pragma endregion
 
+#pragma region 2164 : Ä«µå2
+
+int Solution_2164()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	int N;
+	cin >> N;
+	queue<int> q;
+
+	for (int i = 1; i <= N; i++)
+	{
+		q.push(i);
+	}
+
+	bool bFlip = false;
+	while (q.size() > 1)
+	{
+		if (bFlip)
+			q.push(q.front());
+		q.pop();
+
+		bFlip = !bFlip;
+	}
+	cout << q.front() << ENDL;
+
+	return 0;
+}
+
+#pragma endregion
+
+
 int main()
 {
+	cout << "===== " << _PROBLEM_NUMBER << " =====" << ENDL;
+
 	_APPEND_FUNC(Solution_, _PROBLEM_NUMBER);
 	system("pause");
 
