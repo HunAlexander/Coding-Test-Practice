@@ -1,5 +1,5 @@
 #include "Default.h"
-#define _PROBLEM_NUMBER 2164
+#define _PROBLEM_NUMBER 2609
 
 /* == template ==
 
@@ -928,6 +928,31 @@ int Solution_2164()
 		bFlip = !bFlip;
 	}
 	cout << q.front() << ENDL;
+
+	return 0;
+}
+
+#pragma endregion
+
+#pragma region 2609 : 최대 공약수와 최소 공배수
+
+int GCD_2609(int a, int b)
+{
+	return b ? GCD_2609(b, a % b) : a;
+}
+
+int LCM_2609(int a, int b)
+{
+	return a * b / GCD_2609(a, b);
+}
+
+int Solution_2609()
+{
+	int a, b;
+	cin >> a >> b;
+
+	cout << GCD_2609(a, b) << ENDL;
+	cout << LCM_2609(a, b) << ENDL;
 
 	return 0;
 }

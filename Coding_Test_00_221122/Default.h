@@ -20,3 +20,34 @@ using namespace std;
 
 #define _MIN(x, y) ((x) < (y)) ? x : y
 #define _MAX(x, y) ((x) > (y)) ? x : y
+
+template <typename T>
+void Print_Container_Elements_To_Console(const T& Container)
+{
+	std::cout << "Elements : ";
+	for (const auto& element : Container)
+		std::cout << element << " ";
+	std::cout << '\n';
+}
+template <typename T>
+void Print_Container_Size_To_Console(const T& Container)
+{
+	std::cout << "Size : " << Container.size() << '\n';
+}
+template <typename T>
+void Print_Container_Info_To_Console(const T& Container)
+{
+	std::cout << "==========" << '\n';
+	Print_Container_Size_To_Console(Container);
+	Print_Container_Elements_To_Console(Container);
+	std::cout << "==========" << '\n';
+}
+template <typename T>
+void Print_Container_Info_To_Console(const std::vector<T>& Container)
+{
+	std::cout << "==========" << '\n';
+	Print_Container_Size_To_Console(Container);
+	std::cout << "Capacity : " << Container.capacity() << '\n';
+	Print_Container_Elements_To_Console(Container);
+	std::cout << "==========" << '\n';
+}
