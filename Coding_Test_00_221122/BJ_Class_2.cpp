@@ -1,5 +1,5 @@
 #include "Default.h"
-#define _PROBLEM_NUMBER 2751
+#define _PROBLEM_NUMBER 2798
 
 /* == template ==
 
@@ -1002,6 +1002,63 @@ int Solution_2751_00()
 }
 
 #pragma endregion
+
+#pragma region 2798 : ºí·¢Àè
+
+int Solution_2798()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+
+	int N, M, *pCards, iSum, iMax = 0;
+
+	cin >> N;
+	cin >> M;
+	pCards = new int[N];
+
+	for (int i = 0; i < N; i++)
+		cin >> pCards[i];
+
+	for (int i = N - 1; i >= 2; --i)
+	{
+		iSum = pCards[i];
+		if (M <= iSum)
+			continue;
+
+		for (int j = i - 1; j >= 1; --j)
+		{
+			iSum = pCards[i] + pCards[j];
+
+			if (M <= iSum)
+				continue;
+
+			for (int k = j - 1; k >= 0; --k)
+			{
+				iSum = pCards[i] + pCards[j] + pCards[k];
+
+				if (M < iSum)
+					continue;
+				else if(M == iSum)
+				{
+					cout << M << MEndl;
+					delete[] pCards;
+					return 0;
+				}
+				else if(iSum > iMax)
+				{
+					iMax = iSum;
+				}
+			}
+		}
+	}
+
+	cout << iMax << MEndl;
+	delete[] pCards;
+
+	return 0;
+}
+
+#pragma endregion
+
 
 int main()
 {
