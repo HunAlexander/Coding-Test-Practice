@@ -11,15 +11,17 @@
 
 using namespace std;
 
-#define _COUT_BOOL(x) (x) ? std::cout << "TRUE "<< endl : std::cout << "FALSE" << endl;
+#define MCout_Bool(x) (x) ? std::cout << "TRUE "<< endl : std::cout << "FALSE" << endl;
+#define MCout_Endl std::cout << '\n';
 
-#define _STR(str) # str
+#define	MToStr_Pre(str) # str
+#define MToStr(str) MToStr_Pre(str)
 
-#define _APPEND(x, y) x ## y
-#define _APPEND_FUNC(x, y) _APPEND(x, y)()
+#define MAppend(x, y) x ## y
+#define MAppend_Function(x, y) MAppend(x, y)()
 
-#define _MIN(x, y) ((x) < (y)) ? x : y
-#define _MAX(x, y) ((x) > (y)) ? x : y
+#define MMin(x, y) ((x) < (y)) ? x : y
+#define MMax(x, y) ((x) > (y)) ? x : y
 
 template <typename T>
 void Print_Container_Elements_To_Console(const T& Container)

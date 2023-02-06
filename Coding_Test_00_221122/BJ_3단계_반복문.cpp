@@ -20,7 +20,7 @@ int main()
 
 	//Solution_3();
 
-	cout << "Hello" << _STR(a) << "World" << _APPEND(Solution_, 3)() << '\n';
+	cout << "Hello" << _STR(a) << "World" << MAppend(Solution_, 3)() << '\n';
 	system("pause");
 
 	return 0;

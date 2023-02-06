@@ -142,7 +142,7 @@ int Solution_1065()
 
 int main()
 {
-	_APPEND_FUNC(Solution_, _PROBLEM_NUMBER);
+	MAppend_Function(Solution_, _PROBLEM_NUMBER);
 	system("pause");
 	return 0;
 }

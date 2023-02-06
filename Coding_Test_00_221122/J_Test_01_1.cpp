@@ -68,7 +68,7 @@ bool solution(string s, string t)
 
 void main()
 {
-	_COUT_BOOL(solution("AB", "ABABC"));
+	MCout_Bool(solution("AB", "ABABC"));
 
 	//cout << solution("AB", "ABABC") << endl;
 

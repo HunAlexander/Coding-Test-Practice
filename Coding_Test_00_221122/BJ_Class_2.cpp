@@ -1,5 +1,5 @@
 #include "Default.h"
-#define _PROBLEM_NUMBER 2609
+#define _PROBLEM_NUMBER 2751
 
 /* == template ==
 
@@ -18,9 +18,9 @@ int Solution_0000()
 	return 0;
 }
 */
-#define ENDL '\n'
+#define MEndl '\n'
 
-#define POW(a) ((a) * (a))
+#define MPow(a) ((a) * (a))
 
 #pragma region 1018 : 체스판 다시 칠하기
 
@@ -95,7 +95,7 @@ int Solution_1018_00()
 		}
 	}
 
-	cout << iResult << ENDL;
+	cout << iResult << MEndl;
 
 	return 0;
 }
@@ -210,7 +210,7 @@ int Solution_1018_01()
 		}
 	}
 
-	cout << iResult << ENDL;
+	cout << iResult << MEndl;
 
 	return 0;
 }
@@ -271,7 +271,7 @@ int Solution_1018()
 		}
 	}
 
-	cout << iResult << ENDL;
+	cout << iResult << MEndl;
 
 	return 0;
 }
@@ -284,7 +284,7 @@ int Solution_1085()
 {
 	int x, y, w, h;
 	cin >> x >> y >> w >> h;
-	cout << min(min(abs(x - w), x), min(abs(y - h), y)) << ENDL;
+	cout << min(min(abs(x - w), x), min(abs(y - h), y)) << MEndl;
 	return 0;
 }
 
@@ -322,7 +322,7 @@ int Solution_1181()
 		if (strCheck == strInput[i])
 			continue;
 
-		cout << strInput[i] << ENDL;
+		cout << strInput[i] << MEndl;
 		strCheck = strInput[i];
 	}
 
@@ -381,7 +381,7 @@ int Solution_1181_00()
 		if (strInput[i] == strCheck)
 			continue;
 
-		cout << strInput[i] << ENDL;
+		cout << strInput[i] << MEndl;
 		strCheck = strInput[i];
 	}
 
@@ -413,12 +413,12 @@ int Solution_2231()
 
 		if (iTemp == N)
 		{
-			cout << i << ENDL;
+			cout << i << MEndl;
 			return 0;
 		}
 	}
 
-	cout << 0 << ENDL;
+	cout << 0 << MEndl;
 
 	return 0;
 }
@@ -465,7 +465,7 @@ int Solution_1259()
 			}
 		}
 
-		bPalindrome ? cout << "yes" << ENDL : cout << "no" << ENDL;
+		bPalindrome ? cout << "yes" << MEndl : cout << "no" << MEndl;
 	}
 
 	return 0;
@@ -505,7 +505,7 @@ int Solution_1436()
 		++iCurrent;
 	}
 
-	cout << iCurrent << ENDL;
+	cout << iCurrent << MEndl;
 
 	return 0;
 }
@@ -552,7 +552,7 @@ int Solution_1654()
 		}
 	}
 
-	cout << right << ENDL;
+	cout << right << MEndl;
 
 	return 0;
 }
@@ -588,7 +588,7 @@ int Solution_1654_00()
 		--Length;
 	}
 
-	cout << Length << ENDL;
+	cout << Length << MEndl;
 
 	return 0;
 }
@@ -629,7 +629,7 @@ int Solution_1874()
 		}
 		else if (intList.empty())
 		{
-			cout << "NO" << ENDL;
+			cout << "NO" << MEndl;
 			return 0;
 		}
 		else
@@ -642,7 +642,7 @@ int Solution_1874()
 
 	for (const char& chOperator : operatorList)
 	{
-		cout << chOperator << ENDL;
+		cout << chOperator << MEndl;
 	}
 
 	return 0;
@@ -692,7 +692,7 @@ int Solution_1920()
 			}
 		}
 
-		bExist ? cout << 1 << ENDL : cout << 0 << ENDL;
+		bExist ? cout << 1 << MEndl : cout << 0 << MEndl;
 	}
 
 	return 0;
@@ -733,7 +733,7 @@ int Solution_1929()
 	for (int i = M; i <= N; i++)
 	{
 		if (pPrimeNumbers[i])
-			cout << i << ENDL;
+			cout << i << MEndl;
 	}
 
 	delete[] pPrimeNumbers;
@@ -797,7 +797,7 @@ int Solution_1966()
 			{
 				if (true == pDoc[iCmpIndex].bCheck)
 				{
-					cout << iCmpIndex + 1 << ENDL;
+					cout << iCmpIndex + 1 << MEndl;
 					break;
 				}
 				else
@@ -847,7 +847,7 @@ int Solution_1978()
 			++iPrimeNumberCount;
 	}
 
-	cout << iPrimeNumberCount << ENDL;
+	cout << iPrimeNumberCount << MEndl;
 
 	return 0;
 }
@@ -894,10 +894,10 @@ int Solution_2108()
 	sort(NumberVector.begin(), NumberVector.end());
 	iAvg = static_cast<int>(round((double)iAvg / N));
 
-	cout << iAvg << ENDL;
-	cout << NumberVector[N >> 1] << ENDL;
-	(1 < ModeList.size()) ? cout << *(++ModeList.begin()) << ENDL : cout << ModeList.front() << ENDL;
-	cout << iMax - iMin << ENDL;
+	cout << iAvg << MEndl;
+	cout << NumberVector[N >> 1] << MEndl;
+	(1 < ModeList.size()) ? cout << *(++ModeList.begin()) << MEndl : cout << ModeList.front() << MEndl;
+	cout << iMax - iMin << MEndl;
 
 	return 0;
 }
@@ -927,7 +927,7 @@ int Solution_2164()
 
 		bFlip = !bFlip;
 	}
-	cout << q.front() << ENDL;
+	cout << q.front() << MEndl;
 
 	return 0;
 }
@@ -951,20 +951,63 @@ int Solution_2609()
 	int a, b;
 	cin >> a >> b;
 
-	cout << GCD_2609(a, b) << ENDL;
-	cout << LCM_2609(a, b) << ENDL;
+	cout << GCD_2609(a, b) << MEndl;
+	cout << LCM_2609(a, b) << MEndl;
 
 	return 0;
 }
 
 #pragma endregion
 
+#pragma region 2751 : 수 정렬하기
+
+int Solution_2751()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+
+	int N, *pData;
+
+	cin >> N;
+	pData = new int[N];
+
+	for (int i = 0; i < N; i++)
+		cin >> pData[i];
+
+	sort(pData, pData + N);
+
+	for (int i = 0; i < N; i++)
+		cout << pData[i] << MEndl;
+
+	return 0;
+}
+
+int Solution_2751_00()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	int N;
+	cin >> N;
+	list<int> dataList;
+	int iInput;
+	for (int i = 0; i < N; i++)
+	{
+		cin >> iInput;
+		dataList.push_back(iInput);
+	}
+	dataList.sort();
+	for (const int& iData : dataList)
+	{
+		cout << iData << MEndl;
+	}
+	return 0;
+}
+
+#pragma endregion
 
 int main()
 {
-	cout << "===== " << _PROBLEM_NUMBER << " =====" << ENDL;
+	cout << "===== " << _PROBLEM_NUMBER << " =====" << MEndl;
 
-	_APPEND_FUNC(Solution_, _PROBLEM_NUMBER);
+	MAppend_Function(Solution_, _PROBLEM_NUMBER);
 	system("pause");
 
 	return 0;

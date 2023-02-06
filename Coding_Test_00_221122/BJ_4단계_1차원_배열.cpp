@@ -95,8 +95,8 @@ int Solution_10818()
 		}
 		else
 		{
-			min = _MIN(Values[i], min);
-			max = _MAX(Values[i], max);
+			min = MMin(Values[i], min);
+			max = MMax(Values[i], max);
 		}
 	}
 
@@ -330,7 +330,7 @@ int Solution_4344()
 
 int main()
 {
-	_APPEND_FUNC(Solution_, _PROBLEM_NUMBER);
+	MAppend_Function(Solution_, _PROBLEM_NUMBER);
 	system("pause");
 	return 0;
 }
