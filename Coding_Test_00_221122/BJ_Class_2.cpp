@@ -1039,9 +1039,8 @@ int Solution_2798()
 					continue;
 				else if(M == iSum)
 				{
-					cout << M << MEndl;
-					delete[] pCards;
-					return 0;
+					iMax = iSum;
+					goto loop_out;
 				}
 				else if(iSum > iMax)
 				{
@@ -1051,6 +1050,8 @@ int Solution_2798()
 		}
 	}
 
+	loop_out:
+
 	cout << iMax << MEndl;
 	delete[] pCards;
 
@@ -1058,7 +1059,6 @@ int Solution_2798()
 }
 
 #pragma endregion
-
 
 int main()
 {
