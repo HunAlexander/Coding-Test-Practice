@@ -1,5 +1,5 @@
 #include "Default.h"
-#define _PROBLEM_NUMBER 2798
+#define _PROBLEM_NUMBER 9012
 
 /* == template ==
 
@@ -11,6 +11,7 @@ using namespace std;
 #include <list>
 #include <vector>
 #include <queue>
+#include <string>
 #include <algorithm>
 
 int Solution_0000()
@@ -1037,12 +1038,12 @@ int Solution_2798()
 
 				if (M < iSum)
 					continue;
-				else if(M == iSum)
+				else if (M == iSum)
 				{
 					iMax = iSum;
 					goto loop_out;
 				}
-				else if(iSum > iMax)
+				else if (iSum > iMax)
 				{
 					iMax = iSum;
 				}
@@ -1050,11 +1051,73 @@ int Solution_2798()
 		}
 	}
 
-	loop_out:
+loop_out:
 
 	cout << iMax << MEndl;
 	delete[] pCards;
 
+	return 0;
+}
+
+#pragma endregion
+
+#pragma region 4153 : Á÷°¢»ï°¢Çü
+
+int Solution_4153()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+
+	int iSide[3] = { 0, };
+
+	while (true)
+	{
+		for (int i = 0; i < 3; i++)
+			cin >> iSide[i];
+
+		if (0 == iSide[0] &&
+			0 == iSide[1] &&
+			0 == iSide[2])
+			break;
+
+		sort(iSide, iSide + 3);
+
+		if (MPow(iSide[2]) == (MPow(iSide[0]) + MPow(iSide[1])))
+			cout << "right" << MEndl;
+		else
+			cout << "wrong" << MEndl;
+	}
+
+	return 0;
+}
+
+#pragma endregion
+
+#pragma region 9012 : °ýÈ£
+
+int Solution_9012()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	int T;
+	string bracket = "";
+	cin >> T;
+	while (T--)
+	{
+		int st = 0;
+		cin >> bracket;
+
+		for (const char& ch : bracket)
+		{
+			if ('(' == ch)
+				++st;
+			else if (')' == ch)
+				--st;
+
+			if (0 > st)
+				break;
+		}
+
+		cout << ((0 == st) ? "YES" : "NO") << MEndl;
+	}
 	return 0;
 }
 
