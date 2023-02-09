@@ -1,5 +1,5 @@
 #include "Default.h"
-#define _PROBLEM_NUMBER 9012
+#define _PROBLEM_NUMBER 10250
 
 /* == template ==
 
@@ -1117,6 +1117,23 @@ int Solution_9012()
 		}
 
 		cout << ((0 == st) ? "YES" : "NO") << MEndl;
+	}
+	return 0;
+}
+
+#pragma endregion
+
+#pragma region 10250 : ACM хёез
+
+int Solution_10250()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	int T, H, W, N;
+	cin >> T;
+	while (T--)
+	{
+		cin >> H >> W >> N;
+		cout << (100 * (1 + (N - 1) % H)) + (1 + (N - 1) / H) << '\n';
 	}
 	return 0;
 }
