@@ -1,5 +1,5 @@
 #include "Default.h"
-#define _PROBLEM_NUMBER 10250
+#define _PROBLEM_NUMBER 10816
 
 /* == template ==
 
@@ -12,6 +12,7 @@ using namespace std;
 #include <vector>
 #include <queue>
 #include <string>
+#include <map>
 #include <algorithm>
 
 int Solution_0000()
@@ -1134,6 +1135,87 @@ int Solution_10250()
 	{
 		cin >> H >> W >> N;
 		cout << (100 * (1 + (N - 1) % H)) + (1 + (N - 1) / H) << '\n';
+	}
+	return 0;
+}
+
+#pragma endregion
+
+#pragma region 10814 : 나이순 정렬
+
+typedef struct tagMember_10814 {
+	int iAge;
+	string strName;
+} TMember_10814;
+
+bool Compare_10814(const TMember_10814& lhs, const TMember_10814& rhs) {
+	return (lhs.iAge < rhs.iAge);
+}
+
+int Solution_10814() {
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	int N;
+	cin >> N;
+	TMember_10814* pMembers = new TMember_10814[N];
+	for (int i = 0; i < N; i++)
+	{
+		cin >> pMembers[i].iAge;
+		cin >> pMembers[i].strName;
+	}
+	stable_sort(pMembers, pMembers + N, Compare_10814);
+	for (int i = 0; i < N; i++)
+	{
+		cout << pMembers[i].iAge << ' ' << pMembers[i].strName << '\n';
+	}
+	return 0;
+}
+
+#pragma endregion
+
+#pragma region 10816 : 숫자 카드 2
+
+// 정답이지만, 오버플로우될 수 있음
+int Solution_10816_00()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	int N, M, iInput;
+	array<int, 20000001> arr = { 0, };
+	cin >> N;
+	for (int i = 0; i < N; i++)
+	{
+		cin >> iInput;
+		++arr[iInput + 10000000];
+	}
+	cin >> M;
+	for (int i = 0; i < M; i++)
+	{
+		cin >> iInput;
+		cout << arr[iInput + 10000000] << ' ';
+	}
+	return 0;
+}
+
+int Solution_10816()
+{
+	typedef map<int, int>::iterator itertype;
+	typedef pair<const itertype, bool> rettype;
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	int N, M, iInput;
+	map<int, int> cardCountMap;
+	cin >> N;
+	for (int i = 0; i < N; i++)
+	{
+		cin >> iInput;
+		rettype ret = cardCountMap.emplace(iInput, 1);
+		if (!ret.second)
+			++(*ret.first).second;
+	}
+	cin >> M;
+	for (int i = 0; i < M; i++)
+	{
+		cin >> iInput;
+		itertype iter = cardCountMap.find(iInput);
+		cout << ((iter == cardCountMap.end()) ? 0 : (*iter).second) << ' ';
 	}
 	return 0;
 }
