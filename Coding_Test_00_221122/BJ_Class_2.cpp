@@ -1,5 +1,5 @@
 #include "Default.h"
-#define _PROBLEM_NUMBER 10816
+#define _PROBLEM_NUMBER 10845
 
 /* == template ==
 
@@ -11,6 +11,7 @@ using namespace std;
 #include <list>
 #include <vector>
 #include <queue>
+#include <stack>
 #include <string>
 #include <map>
 #include <algorithm>
@@ -21,8 +22,9 @@ int Solution_0000()
 }
 */
 #define MEndl '\n'
-
 #define MPow(a) ((a) * (a))
+
+#pragma region Previous Solutions
 
 #pragma region 1018 : 체스판 다시 칠하기
 
@@ -1216,6 +1218,203 @@ int Solution_10816()
 		cin >> iInput;
 		itertype iter = cardCountMap.find(iInput);
 		cout << ((iter == cardCountMap.end()) ? 0 : (*iter).second) << ' ';
+	}
+	return 0;
+}
+
+#pragma endregion
+
+#pragma endregion // Previous Solutions
+
+#pragma region 10828 : 스택
+
+int Solution_10828()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	int N, iInput;
+	stack<int> st;
+	string strOperation = "";
+	cin >> N;
+	for (int i = 0; i < N; i++)
+	{
+		cin >> strOperation;
+		if ("push" == strOperation)
+		{
+			cin >> iInput;
+			st.push(iInput);
+		}
+		else if ("pop" == strOperation)
+		{
+			if (st.empty())
+			{
+				cout << -1 << '\n';
+			}
+			else
+			{
+				cout << st.top() << '\n';
+				st.pop();
+			}
+		}
+		else if ("size" == strOperation)
+		{
+			cout << st.size() << '\n';
+		}
+		else if ("empty" == strOperation)
+		{
+			cout << st.empty() << '\n';
+		}
+		else if ("top" == strOperation)
+		{
+			cout << (st.empty() ? -1 : st.top()) << '\n';
+		}
+	}
+
+	return 0;
+}
+
+#pragma endregion
+
+#pragma region 10845 : 큐
+
+/*
+정수를 저장하는 큐를 구현한 다음, 입력으로 주어지는 명령을 처리하는 프로그램을 작성하시오.
+
+명령은 총 여섯 가지이다.
+
+push X: 정수 X를 큐에 넣는 연산이다.
+pop: 큐에서 가장 앞에 있는 정수를 빼고, 그 수를 출력한다. 만약 큐에 들어있는 정수가 없는 경우에는 -1을 출력한다.
+size: 큐에 들어있는 정수의 개수를 출력한다.
+empty: 큐가 비어있으면 1, 아니면 0을 출력한다.
+front: 큐의 가장 앞에 있는 정수를 출력한다. 만약 큐에 들어있는 정수가 없는 경우에는 -1을 출력한다.
+back: 큐의 가장 뒤에 있는 정수를 출력한다. 만약 큐에 들어있는 정수가 없는 경우에는 -1을 출력한다.
+*/
+
+int Solution_10845()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	int N, iInput;
+	queue<int> qe;
+	string strOperation = "";
+	cin >> N;
+	for (int i = 0; i < N; i++)
+	{
+		cin >> strOperation;
+		if ("push" == strOperation)
+		{
+			cin >> iInput;
+			qe.push(iInput);
+		}
+		else if ("pop" == strOperation)
+		{
+			if (qe.empty())
+			{
+				cout << -1 << '\n';
+			}
+			else
+			{
+				cout << qe.front() << '\n';
+				qe.pop();
+			}
+		}
+		else if ("size" == strOperation)
+		{
+			cout << qe.size() << '\n';
+		}
+		else if ("empty" == strOperation)
+		{
+			cout << qe.empty() << '\n';
+		}
+		else if ("front" == strOperation)
+		{
+			cout << (qe.empty() ? -1 : qe.front()) << '\n';
+		}
+		else if ("back" == strOperation)
+		{
+			cout << (qe.empty() ? -1 : qe.back()) << '\n';
+		}
+	}
+	return 0;
+}
+
+#pragma endregion
+
+#pragma region 10866 : 덱
+
+/*
+정수를 저장하는 덱(Deque)를 구현한 다음, 입력으로 주어지는 명령을 처리하는 프로그램을 작성하시오.
+
+명령은 총 여덟 가지이다.
+
+push_front X: 정수 X를 덱의 앞에 넣는다.
+push_back X: 정수 X를 덱의 뒤에 넣는다.
+pop_front: 덱의 가장 앞에 있는 수를 빼고, 그 수를 출력한다. 만약, 덱에 들어있는 정수가 없는 경우에는 -1을 출력한다.
+pop_back: 덱의 가장 뒤에 있는 수를 빼고, 그 수를 출력한다. 만약, 덱에 들어있는 정수가 없는 경우에는 -1을 출력한다.
+size: 덱에 들어있는 정수의 개수를 출력한다.
+empty: 덱이 비어있으면 1을, 아니면 0을 출력한다.
+front: 덱의 가장 앞에 있는 정수를 출력한다. 만약 덱에 들어있는 정수가 없는 경우에는 -1을 출력한다.
+back: 덱의 가장 뒤에 있는 정수를 출력한다. 만약 덱에 들어있는 정수가 없는 경우에는 -1을 출력한다.
+*/
+
+int Solution_10866()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	int N, iInput;
+	deque<int> dq;
+	string strOperation = "";
+	cin >> N;
+	for (int i = 0; i < N; i++)
+	{
+		cin >> strOperation;
+		if ("push_front" == strOperation)
+		{
+			cin >> iInput;
+			dq.push_front(iInput);
+		}
+		else if ("push_back" == strOperation)
+		{
+			cin >> iInput;
+			dq.push_back(iInput);
+		}
+		else if ("pop_front" == strOperation)
+		{
+			if (dq.empty())
+			{
+				cout << -1 << '\n';
+			}
+			else
+			{
+				cout << dq.front() << '\n';
+				dq.pop_front();
+			}
+		}
+		else if ("pop_back" == strOperation)
+		{
+			if (dq.empty())
+			{
+				cout << -1 << '\n';
+			}
+			else
+			{
+				cout << dq.back() << '\n';
+				dq.pop_back();
+			}
+		}
+		else if ("size" == strOperation)
+		{
+			cout << dq.size() << '\n';
+		}
+		else if ("empty" == strOperation)
+		{
+			cout << dq.empty() << '\n';
+		}
+		else if ("front" == strOperation)
+		{
+			cout << (dq.empty() ? -1 : dq.front()) << '\n';
+		}
+		else if ("back" == strOperation)
+		{
+			cout << (dq.empty() ? -1 : dq.back()) << '\n';
+		}
 	}
 	return 0;
 }
