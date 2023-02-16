@@ -1,5 +1,5 @@
 #include "Default.h"
-#define _PROBLEM_NUMBER 10845
+#define _PROBLEM_NUMBER 11651
 
 /* == template ==
 
@@ -1224,8 +1224,6 @@ int Solution_10816()
 
 #pragma endregion
 
-#pragma endregion // Previous Solutions
-
 #pragma region 10828 : 스택
 
 int Solution_10828()
@@ -1420,6 +1418,371 @@ int Solution_10866()
 }
 
 #pragma endregion
+
+#pragma region 11050 : 이항 계수 1
+
+int Solution_11050()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	int N, K;
+	cin >> N >> K;
+	cout << Factorial_Iter(N) / (Factorial_Iter(K) * Factorial_Iter(N - K)) << '\n';
+	return 0;
+}
+
+#pragma endregion
+
+#pragma region 11650 : 좌표 정렬하기
+
+typedef struct tagPosition_11650 {
+	int iX = 0;
+	int iY = 0;
+}TPosition_11650;
+
+bool Compare_11650(const TPosition_11650& _lhs, const TPosition_11650& _rhs)
+{
+	if (_lhs.iX < _rhs.iX)
+		return true;
+	else if (_lhs.iX == _rhs.iX)
+		return (_lhs.iY < _rhs.iY);
+	return false;
+}
+
+int Solution_11650()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	int N;
+	cin >> N;
+	pair<int, int>* pPositions = new pair<int, int>[N];
+	for (int i = 0; i < N; i++)
+	{
+		cin >> pPositions[i].first >> pPositions[i].second;
+	}
+	sort(pPositions, pPositions + N);
+	for (int i = 0; i < N; i++)
+	{
+		cout << pPositions[i].first << ' ' << pPositions[i].second << '\n';
+	}
+	delete[] pPositions;
+	return 0;
+}
+
+int Solution_11650_00()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	int N;
+	cin >> N;
+	TPosition_11650* pPositions = new TPosition_11650[N];
+	for (int i = 0; i < N; i++)
+	{
+		cin >> pPositions[i].iX >> pPositions[i].iY;
+	}
+	sort(pPositions, pPositions + N, Compare_11650);
+	for (int i = 0; i < N; i++)
+	{
+		cout << pPositions[i].iX << ' ' << pPositions[i].iY << '\n';
+	}
+	delete[] pPositions;
+	return 0;
+}
+
+#pragma endregion
+
+#pragma region 11866 : 요세푸스 문제 0
+
+int Solution_11866()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	int N, K;
+	cin >> N >> K;
+	list<int> sequenceList;
+	queue<int> numberQueue;
+	for (int i = 1; i <= N; i++)
+		numberQueue.push(i);
+
+	while (!numberQueue.empty())
+	{
+		for (int i = 0; i < K - 1; i++)
+		{
+			numberQueue.push(numberQueue.front());
+			numberQueue.pop();
+		}
+		sequenceList.push_back(numberQueue.front());
+		numberQueue.pop();
+	}
+	cout << '<';
+	for (auto iter = sequenceList.begin(); iter != sequenceList.end(); iter++)
+	{
+		cout << *iter;
+		if (iter != --sequenceList.end())
+			cout << ", ";
+	}
+	cout << '>';
+
+	return 0;
+}
+
+int Solution_11866_00()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	int N, K;
+	cin >> N >> K;
+	list<int> dataList;
+	queue<int> sequence;
+	for (int i = 1; i <= N; i++)
+		dataList.push_back(i);
+
+	auto iter = dataList.begin();
+	while (!dataList.empty())
+	{
+		for (int i = 0; i < K - 1; i++)
+		{
+			iter++;
+			if (iter == dataList.end())
+				iter = dataList.begin();
+		}
+		sequence.push(*iter);
+		iter = dataList.erase(iter);
+		if (iter == dataList.end())
+			iter = dataList.begin();
+	}
+
+	cout << "<";
+	while (true)
+	{
+		cout << sequence.front();
+		sequence.pop();
+		if (sequence.empty())
+		{
+			cout << ">\n";
+			break;
+		}
+		else
+		{
+			cout << ", ";
+		}
+	}
+
+	return 0;
+}
+
+#pragma endregion
+
+#pragma region 2775 : 부녀회장이 될테야
+
+int Calculate_Recursive_2775(int k, int n)
+{
+	if (0 == k)
+		return n;
+	else
+	{
+		int iRet = 0;
+		for (int i = 1; i <= n; i++)
+			iRet += Calculate_Recursive_2775(k - 1, i);
+
+		return iRet;
+	}
+}
+
+int Solution_2775()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	int T, k, n;
+	int arr[15][15] = { 0 };
+
+	for (int i = 0; i < 15; i++)
+	{
+		for (int j = 0; j < 15; j++)
+		{
+			if (0 == i)
+			{
+				arr[i][j] = j + 1;
+			}
+			else
+			{
+				for (int l = 0; l <= j; l++)
+				{
+					arr[i][j] += arr[i - 1][l];
+				}
+			}
+		}
+	}
+
+	cin >> T;
+	for (int i = 0; i < T; i++)
+	{
+		cin >> k >> n;
+		cout << arr[k][n - 1] << '\n';
+	}
+	return 0;
+}
+
+int Solution_2775_00()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	int T, k, n;
+	cin >> T;
+	for (int i = 0; i < T; i++)
+	{
+		cin >> k >> n;
+		cout << Calculate_Recursive_2775(k, n) << '\n';
+	}
+	return 0;
+}
+
+#pragma endregion
+
+#pragma region 2805 : 나무 자르기
+/*
+문제
+상근이는 나무 M미터가 필요하다. 근처에 나무를 구입할 곳이 모두 망해버렸기 때문에, 정부에 벌목 허가를 요청했다. 정부는 상근이네 집 근처의 나무 한 줄에 대한 벌목 허가를 내주었고, 상근이는 새로 구입한 목재절단기를 이용해서 나무를 구할것이다.
+
+목재절단기는 다음과 같이 동작한다. 먼저, 상근이는 절단기에 높이 H를 지정해야 한다. 높이를 지정하면 톱날이 땅으로부터 H미터 위로 올라간다. 그 다음, 한 줄에 연속해있는 나무를 모두 절단해버린다. 따라서, 높이가 H보다 큰 나무는 H 위의 부분이 잘릴 것이고, 낮은 나무는 잘리지 않을 것이다. 예를 들어, 한 줄에 연속해있는 나무의 높이가 20, 15, 10, 17이라고 하자. 상근이가 높이를 15로 지정했다면, 나무를 자른 뒤의 높이는 15, 15, 10, 15가 될 것이고, 상근이는 길이가 5인 나무와 2인 나무를 들고 집에 갈 것이다. (총 7미터를 집에 들고 간다) 절단기에 설정할 수 있는 높이는 양의 정수 또는 0이다.
+
+상근이는 환경에 매우 관심이 많기 때문에, 나무를 필요한 만큼만 집으로 가져가려고 한다. 이때, 적어도 M미터의 나무를 집에 가져가기 위해서 절단기에 설정할 수 있는 높이의 최댓값을 구하는 프로그램을 작성하시오.
+
+입력
+첫째 줄에 나무의 수 N과 상근이가 집으로 가져가려고 하는 나무의 길이 M이 주어진다. (1 ≤ N ≤ 1,000,000, 1 ≤ M ≤ 2,000,000,000)
+
+둘째 줄에는 나무의 높이가 주어진다. 나무의 높이의 합은 항상 M보다 크거나 같기 때문에, 상근이는 집에 필요한 나무를 항상 가져갈 수 있다. 높이는 1,000,000,000보다 작거나 같은 양의 정수 또는 0이다.
+
+출력
+적어도 M미터의 나무를 집에 가져가기 위해서 절단기에 설정할 수 있는 높이의 최댓값을 출력한다.
+*/
+
+bool Check_2805(int* pTree, int iTreeCount, int iHeight, int M)
+{
+	long long iSum = 0;
+	for (int i = 0; i < iTreeCount; i++)
+	{
+		if (iHeight < pTree[i])
+			iSum += (pTree[i] - iHeight);
+	}
+	if (iSum >= M)
+		return true;
+	else
+		return false;
+}
+
+int Solution_2805() {
+	ios::sync_with_stdio(false); cin.tie(NULL);
+
+	int N, M;
+	int* pTree = nullptr;
+	int iStart = 0, iEnd = 0;
+
+	cin >> N >> M;
+	pTree = new int[N];
+
+	for (int i = 0; i < N; i++)
+	{
+		cin >> pTree[i];
+		iEnd = max(pTree[i], iEnd);
+	}
+
+	while (iStart + 1 < iEnd)
+	{
+		int iMid = (iStart + iEnd) / 2;
+		if (Check_2805(pTree, N, iMid, M))
+		{
+			iStart = iMid;
+		}
+		else
+		{
+			iEnd = iMid;
+		}
+	}
+	cout << iStart << '\n';
+
+	return 0;
+}
+
+int Solution_2805_00()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+
+	int N, M, H = 0;
+	int* pTree = nullptr;
+	int iStart = 0, iEnd = 0;
+
+	cin >> N >> M;
+	pTree = new int[N];
+
+	for (int i = 0; i < N; i++)
+	{
+		cin >> pTree[i];
+		iEnd = max(pTree[i], iEnd);
+	}
+
+	while (iStart <= iEnd)
+	{
+		int iMid = (iStart + iEnd) >> 1;
+		long long iSum = 0;
+		for (int i = 0; i < N; i++)
+		{
+			if (pTree[i] > iMid)
+				iSum += pTree[i] - iMid;
+		}
+		if (M == iSum)
+		{
+			H = iMid;
+			break;
+		}
+		else if (M > iSum)
+		{
+			iEnd = iMid - 1;
+		}
+		else
+		{
+			iStart = iMid + 1;
+			H = iMid;
+		}
+	}
+
+	cout << H << '\n';
+
+	return 0;
+}
+
+#pragma endregion
+
+#pragma region 11651 : 좌표 정렬하기 2
+
+/*
+문제
+2차원 평면 위의 점 N개가 주어진다. 좌표를 y좌표가 증가하는 순으로, y좌표가 같으면 x좌표가 증가하는 순서로 정렬한 다음 출력하는 프로그램을 작성하시오.
+
+입력
+첫째 줄에 점의 개수 N (1 ≤ N ≤ 100,000)이 주어진다. 둘째 줄부터 N개의 줄에는 i번점의 위치 xi와 yi가 주어진다. (-100,000 ≤ xi, yi ≤ 100,000) 좌표는 항상 정수이고, 위치가 같은 두 점은 없다.
+
+출력
+첫째 줄부터 N개의 줄에 점을 정렬한 결과를 출력한다.
+*/
+
+int Solution_11651()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	int N;
+	list<pair<int, int>> Positions;
+	cin >> N;
+	for (int i = 0; i < N; i++)
+	{
+		int iX, iY;
+		cin >> iX >> iY;
+		Positions.push_back(make_pair(iY, iX));
+	}
+	Positions.sort();
+	for (pair<int, int> Position : Positions)
+	{
+		cout << Position.second << ' ' << Position.first << '\n';
+	}
+
+	return 0;
+}
+
+#pragma endregion
+
+#pragma endregion // Previous Solutions
 
 int main()
 {

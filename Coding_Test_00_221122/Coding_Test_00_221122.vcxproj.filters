@@ -122,5 +122,8 @@
     <ClInclude Include="Default.h">
       <Filter>Etc</Filter>
     </ClInclude>
+    <ClInclude Include="Function.h">
+      <Filter>Etc</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
