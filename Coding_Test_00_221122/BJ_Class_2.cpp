@@ -2085,6 +2085,7 @@ typedef struct tagPerson_7568 {
 	int iRank = 1;
 }TPerson_7568;
 
+// 필요없음
 bool Compare_7568(TPerson_7568& _lhs, TPerson_7568& _rhs)
 {
 	if (_lhs.x > _rhs.x)
@@ -2128,6 +2129,7 @@ int Solution_7568()
 	return 0;
 }
 
+// 정답아님
 int Solution_7568_00()
 {
 	ios::sync_with_stdio(false); cin.tie(NULL);
