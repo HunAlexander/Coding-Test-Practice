@@ -193,7 +193,7 @@ int Solution_2742()
 
 	size_t N = 0;
 	cin >> N;
-
+	dfeg
 	for (size_t i = N; i > 0; i--)
 	{
 		cout << i << ENDL;
