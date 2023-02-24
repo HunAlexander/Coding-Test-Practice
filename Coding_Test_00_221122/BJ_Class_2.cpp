@@ -1,5 +1,5 @@
 #include "Default.h"
-#define _PROBLEM_NUMBER 10773
+#define _PROBLEM_NUMBER 15829
 
 /* == template ==
 
@@ -23,6 +23,7 @@ int Solution_0000()
 */
 #define MEndl '\n'
 #define MPow(a) ((a) * (a))
+#define MOD 1234567891
 
 #pragma region Previous Solutions
 
@@ -717,7 +718,7 @@ int Solution_1929()
 	int M, N;
 	cin >> M >> N;
 
-	bool* pPrimeNumbers = new bool[N + 1];
+	bool* pPrimeNumbers = new bool[N + 1]{};
 	for (int i = 2; i <= N; i++)
 	{
 		pPrimeNumbers[i] = true;
@@ -1146,8 +1147,8 @@ int Solution_10250()
 #pragma region 10814 : 나이순 정렬
 
 typedef struct tagMember_10814 {
-	int iAge;
-	string strName;
+	int iAge = 0;
+	string strName = "";
 } TMember_10814;
 
 bool Compare_10814(const TMember_10814& lhs, const TMember_10814& rhs) {
@@ -1854,8 +1855,6 @@ int Solution_2839()
 
 #pragma endregion
 
-#pragma endregion // Previous Solutions
-
 #pragma region 4949 : 균형잡힌 세상
 
 /*
@@ -1972,10 +1971,9 @@ int Solution_4949_00()
 	int iStartIndex = 0;
 	int iEndIndex = 0;
 	getline(cin, strInput);
-
 	while (true)
 	{
-		iEndIndex = strInput.find('.', iStartIndex);
+		iEndIndex = static_cast<int>(strInput.find('.', iStartIndex));
 		if (string::npos == iEndIndex)
 			break;
 
@@ -2259,7 +2257,7 @@ int Solution_10773()
 		else
 			st.push(iInput);
 	}
-	
+
 	while (!st.empty())
 	{
 		iSum += st.top();
@@ -2273,6 +2271,90 @@ int Solution_10773()
 
 #pragma endregion
 
+#pragma region 10989 : 수 정렬하기 3
+/*
+문제
+N개의 수가 주어졌을 때, 이를 오름차순으로 정렬하는 프로그램을 작성하시오.
+
+입력
+첫째 줄에 수의 개수 N(1 ≤ N ≤ 10,000,000)이 주어진다. 둘째 줄부터 N개의 줄에는 수가 주어진다. 이 수는 10,000보다 작거나 같은 자연수이다.
+
+출력
+첫째 줄부터 N개의 줄에 오름차순으로 정렬한 결과를 한 줄에 하나씩 출력한다.
+*/
+int Solution_10989() {
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	int N = 0;
+	int arrNumberCount[10001] = { 0, };
+	int iInputNumber = 0;
+	cin >> N;
+	for (int i = 0; i < N; i++)
+	{
+		cin >> iInputNumber;
+		++arrNumberCount[iInputNumber];
+	}
+	for (int i = 1; i < 10001; i++)
+	{
+		for (int j = 0; j < arrNumberCount[i]; j++)
+		{
+			cout << i << '\n';
+		}
+	}
+	return 0;
+}
+
+// 정답 아님 : 메모리 초과 (메모리 8MB 제한)
+int Solution_10989_00()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	int N;
+	int* pData = nullptr;
+	cin >> N;
+	pData = new int[N];
+
+	for (int i = 0; i < N; i++)
+	{
+		cin >> pData[i];
+	}
+
+	sort(pData, pData + N);
+
+	for (int i = 0; i < N; i++)
+	{
+		cout << pData[i] << '\n';
+	}
+
+	delete[] pData;
+
+	return 0;
+}
+
+#pragma endregion
+
+#pragma region 15829 : Hashing
+
+int Solution_15829()
+{
+	ios::sync_with_stdio(false); cin.tie(NULL);
+	int L = 0;
+	long long r = 1;
+	int iOffset = 'a' - 1;
+	long long iSum = 0;
+	string strInput = "";
+	cin >> L;
+	cin >> strInput;
+	for (int i = 0; i < L; i++)
+	{
+		iSum += (strInput[i] - iOffset) * r;
+		r = (r * 31) % MOD;
+	}
+	cout << iSum % MOD << '\n';
+	return 0;
+}
+
+#pragma endregion
+
+#pragma endregion // Previous Solutions
 
 int main()
 {
